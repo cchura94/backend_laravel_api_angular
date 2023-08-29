@@ -31,7 +31,7 @@ class CategoriaController extends Controller
         $categoria->detalle = $request->detalle;
         $categoria->save();
 
-        return response()->json(["mensaje"=> -"Categoria Registrada"], 201);
+        return response()->json(["mensaje"=> "Categoria Registrada"], 201);
     }
 
     /**
@@ -58,7 +58,7 @@ class CategoriaController extends Controller
         $categoria->detalle = $request->detalle;
         $categoria->update();
 
-        return response()->json(["mensaje"=> -"Categoria Actualizada"], 201);
+        return response()->json(["mensaje"=> "Categoria Actualizada"], 201);
     }
 
     /**
@@ -69,6 +69,6 @@ class CategoriaController extends Controller
         $categoria = Categoria::findOrFail($id);
         $categoria->delete();
         
-        return response()->json(["mensaje"=> -"Categoria Eliminada"], 200);
+        return response()->json(["mensaje"=> "Categoria Eliminada"], 200);
     }
 }

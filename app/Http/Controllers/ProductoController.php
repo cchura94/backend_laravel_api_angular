@@ -33,7 +33,22 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validación
+        $request->validate([
+            "nombre" => "required",
+            "categoria_id" => "required"
+        ]);
+        // guardar
+        $producto = new Producto();
+        $producto->nombre = $request->nombre;
+        $producto->precio = $request->precio;
+        $producto->stock = $request->stock;
+        $producto->descripcion = $request->descripcion;
+        $producto->categoria_id = $request->categoria_id;
+        $producto->save();
+
+        return response()->json(["message" => "producto Registrado"], 201);
+        
     }
 
     /**
