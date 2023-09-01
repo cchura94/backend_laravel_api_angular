@@ -74,4 +74,20 @@ class ProductoController extends Controller
     {
         //
     }
+
+    public function actualizarImagen(Request $request, $id){
+        if($file = $request->file("imagen")){
+            $direccion_imagen = time(). "-" . $file->getClientOriginalName();
+            $file->move("imagenes/", $direccion_imagen);
+
+            $direccion_imagen = "imagenes/". $direccion_imagen;
+
+            $producto = Producto::find($id);
+            $producto->imagen = $direccion_imagen;
+            $producto->update();
+
+            return response()->json(["mensaje" => "Imagen Actualizada"], 201);
+        }
+        return response()->json(["message" => "Se requiere Imagen"], 422);
+    }
 }

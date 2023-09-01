@@ -28,6 +28,9 @@ Route::prefix('v1/auth')->group(function(){
 });
 
 Route::middleware('auth:sanctum')->group(function(){
+
+    Route::post("producto/{id}/actualizar-imagen", [ProductoController::class, "actualizarImagen"]);
+
     // usuario
     Route::apiResource("usuario", UsuarioController::class);
     Route::apiResource("persona", PersonaController::class);
