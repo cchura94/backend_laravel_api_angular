@@ -30,6 +30,7 @@ Route::prefix('v1/auth')->group(function(){
 Route::middleware('auth:sanctum')->group(function(){
 
     Route::post("producto/{id}/actualizar-imagen", [ProductoController::class, "actualizarImagen"]);
+    Route::get("cliente/buscar", [ClienteController::class, "buscarCliente"]);
 
     // usuario
     Route::apiResource("usuario", UsuarioController::class);

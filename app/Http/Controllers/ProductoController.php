@@ -17,11 +17,11 @@ class ProductoController extends Controller
         $limit = isset($request->limit)?$request->limit:10;
 
         if($q){
-            $productos = Producto::where("nombre", "like", "%$q%")
+            $productos = Producto::with('categoria')->where("nombre", "like", "%$q%")
                                     ->orderBy("id", "desc")
                                     ->paginate($limit);
         }else{
-            $productos = Producto::orderBy("id", "desc")->paginate($limit);
+            $productos = Producto::with('categoria')->orderBy("id", "desc")->paginate($limit);
         }
 
         return response()->json($productos, 200);
